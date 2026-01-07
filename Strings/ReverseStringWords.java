@@ -1,4 +1,4 @@
-package Arrays;
+package Strings;
 
 public class ReverseStringWords {
     public static String reverse(String x){
