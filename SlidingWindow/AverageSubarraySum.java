@@ -2,21 +2,18 @@ package SlidingWindow;
 
 public class AverageSubarraySum {
     public static double findMaxAverage(int[] nums, int k) {
-        int n = nums.length;
-        if(n < k) return -1;
-        double ans = 0;
-        for(int i = 0; i<k; i++){
-            ans+= nums[i];
-        }
-        ans = ans/k;
-        double temp = ans;
-        int left = 0;
-        for(int i = k; i<n; i++){
-            temp = temp * k;
-            temp -= nums[left++];
-            temp += nums[i];
-            temp = temp/k;
-            ans = Math.max(temp,ans);
+        int windowSt = 0;
+        int windowEnd = 0;
+        double windowSum = 0;
+        double ans = Integer.MIN_VALUE;
+
+        for(windowEnd = 0; windowEnd < nums.length; windowEnd++){
+            windowSum += nums[windowEnd];
+
+            if(windowEnd >= k-1){
+                ans = Math.max(ans,windowSum/k);
+                windowSum -= nums[windowSt++];
+            }
         }
 
         return ans;
