@@ -2,7 +2,6 @@ package SlidingWindow;
 
 public class MaximumSubarray {
     public static int maxSubArray(int[] nums) {
-        int left = 0;
         int ans = nums[0];
         int temp = 0;
         int st = 0;
@@ -21,6 +20,7 @@ public class MaximumSubarray {
             }
         }
         // st and end are starting and ending indices of maximum subarray
+        System.out.println("From" + st + "to" + end);
         return ans;
     }
     
